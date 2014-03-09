@@ -1,0 +1,119 @@
+@import "normalize";
+@import "bourbon";
+
+$blue:      #2c3e50;
+$white:     #ffffff;
+$gray:      #7f9293;
+$red:       #e74c3c;
+$green:     #13987e;
+
+body {
+    font-family: 'Source Sans Pro', $helvetica;
+    &:before {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(255,255,255,0.7) url('../img/loading.gif') no-repeat 50% 50%;
+        z-index: 100;
+        content: " ";
+        display: none;
+    }
+    &.loading:before {
+        display: block;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $green;
+    @include transition(color 0.25s);
+}
+
+#hd {
+    font-weight: 700;
+    position: relative;
+    z-index: 10;
+    background: $blue;
+    color: $white;
+    padding: 0.5em 1em;
+    text-align: center;
+    font-size: em(32);
+    a {
+        color: $white;
+    }
+}
+
+#previous,
+#next {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.5em;
+    z-index: 11;
+    color: $white;
+}
+
+#previous {
+    left: 0.5em;
+}
+
+#next {
+    right: 0.5em;
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+    padding: 0.9em 0;
+    background: $blue;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    color: $white;
+}
+
+.no-events {
+    padding: 0 1em;
+    text-align: center;
+}
+
+#events {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.vevent {
+    position: relative;
+    z-index: 1;
+    padding: 1em 1em 1em 7em;
+    border-bottom: 1px solid $gray;
+    .date {
+        position: absolute;
+        background: $green;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 6em;
+        padding: 1em 0;
+        text-align: center;
+        color: $white;
+        border-bottom: 1px solid $white;
+        margin-bottom: -1px;
+    }
+    .day {
+        font-size: em(32);
+        font-weight: 700;
+        display: block;
+    }
+    .description,
+    .location {
+        margin: 0 0 0.5em;
+    }
+    .notes {
+        -ms-word-break: break-all;
+        word-break: break-all;
+    }
+}

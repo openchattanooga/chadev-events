@@ -1,0 +1,46 @@
+---
+layout: default
+title: CHA Dev Events
+---
+
+        <header id="hd">
+            <a href="./" title="CHA Dev Events" id="brand">CHA Dev Events</a>
+        </header>
+
+        <main id="calendar">
+            <noscript>
+                Sorry, you need JavaScript to view this page
+            </noscript>
+        </main>
+
+        <script type="text/mustache" id="template">
+        {% raw %}
+            <h2>
+                <a href="#previous" title="Previous Month" class="fa fa-angle-left" id="previous"></a>
+                {{ month }}
+                <a href="#next" title="Next Month" class="fa fa-angle-right" id="next"></a>
+            </h2>
+            {{#events.length}}
+            <ul id="events" class="vcal">
+                {{#events}}
+                <li class="vevent">
+                    <time class="date">
+                        <span class="day">{{ day }}</span>
+                        <span class="time">{{ time }}</span>
+                    </time>
+                    <h3 class="description">{{ title }}</h3>
+                    {{#address}}
+                    <address class="location"><a href="http://maps.google.com/?q={{ address }}" title="Get Directions">{{ address }}</a></address>
+                    {{/address}}
+                    <div class="notes">{{{ content }}}</div>
+                </li>
+                {{/events}}
+            </ul>
+            {{/events.length}}
+            {{^events.length}}
+            <p class="no-events">There are no events for this&nbsp;month.</p>
+            {{/events.length}}
+        {% endraw %}
+        </script>
+        <script src="http://www.google.com/jsapi"></script>
+        <script src="js/core.min.js"></script>
